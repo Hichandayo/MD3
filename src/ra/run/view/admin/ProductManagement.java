@@ -18,14 +18,17 @@ public class ProductManagement {
     static CategoryServiceImpl categoryService = new CategoryServiceImpl();
     public static void showProduct() {
         while (true) {
-            System.out.println("1. Hiển thị sản phẩm");
-            System.out.println("2. Thêm sản phẩm");
-            System.out.println("3. Sửa sản phẩm");
-            System.out.println("4. Xóa sản phẩm");
-            System.out.println("5. Tìm kiếm sản phẩm theo tên");
-            System.out.println("6. Hiển thị sản phẩm theo danh mục");
-            System.out.println("7. Quay Lại");
-            System.out.print("Hãy nhập lựa chọn: ");
+            System.out.println(ANSI_PURPLE + "╔════════════════════════════════════════════╗" + ANSI_RESET);
+            System.out.println(ANSI_PURPLE + "║        Welcome to Hi-chan Shop             ║" + ANSI_RESET);
+            System.out.println(ANSI_PURPLE + "╠════════════════════════════════════════════╣" + ANSI_RESET);
+            System.out.println(ANSI_PURPLE + "║" + ANSI_RESET + ANSI_CYAN + "    1. Hiển thị sản phẩm " + ANSI_RESET + ANSI_PURPLE + "               ║" + ANSI_RESET);
+            System.out.println(ANSI_PURPLE + "║" + ANSI_RESET + ANSI_CYAN + "    2. Thêm sản phẩm" + ANSI_RESET + ANSI_PURPLE + "                    ║" + ANSI_RESET);
+            System.out.println(ANSI_PURPLE + "║" + ANSI_RESET + ANSI_CYAN + "    3. Sửa sản phẩm" + ANSI_RESET + ANSI_PURPLE + "                     ║" + ANSI_RESET);
+            System.out.println(ANSI_PURPLE + "║" + ANSI_RESET + ANSI_CYAN + "    4. Xóa sản phẩm" + ANSI_RESET + ANSI_PURPLE + "                     ║" + ANSI_RESET);
+            System.out.println(ANSI_PURPLE + "║" + ANSI_RESET + ANSI_CYAN + "    5. Tìm kiếm sản phẩm theo tên" + ANSI_RESET + ANSI_PURPLE + "       ║" + ANSI_RESET);
+            System.out.println(ANSI_PURPLE + "║" + ANSI_RESET + ANSI_CYAN + "    6. Hiển thị sản phẩm theo danh mục" + ANSI_RESET + ANSI_PURPLE + "  ║" + ANSI_RESET);
+            System.out.println(ANSI_PURPLE + "║" + ANSI_RESET + ANSI_CYAN + "    7. Quay Lại" + ANSI_RESET + ANSI_PURPLE + "                         ║" + ANSI_RESET);
+            System.out.println(ANSI_PURPLE + "╚ " + ANSI_RESET + ANSI_CYAN + "  Nhập lựa chọn ⭣ ⭣ ⭣" + ANSI_RESET + ANSI_PURPLE + "                 ═╝" + ANSI_RESET);
             byte choice = InputMethods.getByte();
             switch (choice) {
                 case 1:
@@ -74,7 +77,7 @@ public class ProductManagement {
         try {
             List<Product> products = IOFile.readFromFile(IOFile.PRODUCT_PATH);
             List<Category> categories = categoryService.getAll();
-            System.out.print("Bạn muốn thêm bao nhiêu loại danh mục : ");
+            System.out.print("Bạn muốn thêm bao nhiêu sản phẩm : ");
             int numberOfProducts;
             while(true){
                 try{
@@ -94,11 +97,7 @@ public class ProductManagement {
                     System.out.println(ANSI_PURPLE + "Nhập tên sản phẩm " + (i+1) + ": " + ANSI_RESET);
                     name = InputMethods.getString().trim();
                     if (!name.isEmpty()){
-                        String productName = name;
-                        boolean exists = products.stream().anyMatch(p -> p.getProductName().equalsIgnoreCase(productName));
-                        if (exists ) {
-                            System.out.println("Sản phẩm đã tồn tại. Vui lòng nhập tên khác.");
-                        }if (!ProductValidation.isValidCategoryName(name)){
+                        if (!ProductValidation.isValidCategoryName(name)){
                             System.out.println("không được nhập mỗi số vào tên sản phẩm. Vui Lòng Nhập Lại!!");
                         }else{
                             break;
@@ -113,7 +112,7 @@ public class ProductManagement {
                     String productDes = InputMethods.getString().trim();
                     if (productDes.isEmpty()){
                         System.out.println("Mô tả không được trống. Vui lòng nhập lại!!");
-                    }if (ProductValidation.isValidProductDescription(productDes)){
+                    }if (!ProductValidation.isValidProductDescription(productDes)){
                         System.out.println("Mô tả phải có ít nhất 1 ký tự (Không phải khoảng trắng) : ");
                     }else {
                         break;
@@ -125,7 +124,7 @@ public class ProductManagement {
                     String productPrice = InputMethods.getString().trim();
                     if (productPrice.isEmpty()){
                         System.out.println("giá sản phẩm không được trống. Vui lòng nhập lại!!");
-                    }if(ProductValidation.isValidProductPrice(productPrice)){
+                    }if(!ProductValidation.isValidProductPrice(productPrice)){
                         System.out.println("giá sản phẩm phải lớn hơn 1000. Vui lòng nhập lại!!");
                     }else{
                         break;
@@ -135,7 +134,7 @@ public class ProductManagement {
                 while(true){
                     System.out.println(ANSI_PURPLE + "Nhập số lượng sản phẩm: " + ANSI_RESET);
                     int quantity = Integer.parseInt(InputMethods.getString());
-                    if(ProductValidation.isValidProductQuantity(String.valueOf(quantity))){
+                    if(!ProductValidation.isValidProductQuantity(String.valueOf(quantity))){
                         System.out.println("Số lượng không hợp lệ. Vui lòng nhập lại.");
                     }else{
                         break;
@@ -153,7 +152,7 @@ public class ProductManagement {
                     System.out.println("Lựa chọn không hợp lệ.");
                     return;
                 }
-//                Category selectedCategory = categories.get(categoryChoice - 1);
+                Category selectedCategory = categories.get(categoryChoice - 1);
 
                 Product newProduct = new Product();
                 products.add(newProduct);

@@ -45,9 +45,8 @@ public class UserManagement {
     }
 
     public static void displayUser() {
-        IOFile<User> userIO = new IOFile<>();
         try {
-            List<User> users = userIO.readFromFile(IOFile.CUSTOMER_PATH);
+            List<User> users = IOFile.readFromFile(IOFile.CUSTOMER_PATH);
             if (users == null || users.isEmpty()) {
                 System.out.println("Không có người dùng nào để hiển thị.");
             } else {
@@ -61,9 +60,8 @@ public class UserManagement {
     }
 
     public static void searchUser() {
-        IOFile<User> userIO = new IOFile<>();
         try {
-            List<User> users = userIO.readFromFile(IOFile.CUSTOMER_PATH);
+            List<User> users = IOFile.readFromFile(IOFile.CUSTOMER_PATH);
             if (users.isEmpty()) {
                 System.out.println("Danh sách người dùng trống.");
                 return;
@@ -93,9 +91,8 @@ public class UserManagement {
 
 
     public static void lockUser() {
-        IOFile<User> userIO = new IOFile<>();
         try {
-            List<User> users = userIO.readFromFile(IOFile.CUSTOMER_PATH);
+            List<User> users = IOFile.readFromFile(IOFile.CUSTOMER_PATH);
             if (users.isEmpty()) {
                 System.out.println("Danh sách người dùng trống.");
                 return;
@@ -119,7 +116,7 @@ public class UserManagement {
                     } else {
                         System.out.println("Lựa chọn không hợp lệ.");
                     }
-                    userIO.writeToFile(IOFile.CUSTOMER_PATH, users);
+                    IOFile.writeToFile(IOFile.CUSTOMER_PATH, users);
                     userFound = true;
                     break;
                 }
@@ -132,9 +129,8 @@ public class UserManagement {
         }
     }
     public static void assignRole() {
-        IOFile<User> userIO = new IOFile<>();
         try {
-            List<User> users = userIO.readFromFile(IOFile.CUSTOMER_PATH);
+            List<User> users = IOFile.readFromFile(IOFile.CUSTOMER_PATH);
             if (users.isEmpty()) {
                 System.out.println("Danh sách người dùng trống.");
                 return;
@@ -156,7 +152,7 @@ public class UserManagement {
                     } else {
                         System.out.println("Lựa chọn không hợp lệ.");
                     }
-                    userIO.writeToFile(IOFile.CUSTOMER_PATH, users);
+                    IOFile.writeToFile(IOFile.CUSTOMER_PATH, users);
                     userFound = true;
                     break;
                 }

@@ -84,7 +84,6 @@ public class CategoryManagement {
                     System.out.println("Vui lòng nhập một số nguyên hợp lệ.");
                 }
             }
-
             for (int i = 0; i < numberOfCategories; i++) {
                 String name;
                 while (true) {

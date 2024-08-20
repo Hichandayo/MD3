@@ -16,8 +16,8 @@ public class AdminMenu {
         while (true) {
             System.out.println("----------ADMIN MENU----------");
             System.out.println("1. Quản lý người dùng");
-            System.out.println("2. Quản lý sản phẩm");
-            System.out.println("3. Quản lý danh mục");
+            System.out.println("2. Quản lý danh mục");
+            System.out.println("3. Quản lý sản phẩm");
             System.out.println("4. Quản lý hoá đơn");
             System.out.println("5. Đăng Xuất");
             System.out.print("Hãy nhập lựa chọn: ");
@@ -27,10 +27,10 @@ public class AdminMenu {
                     userManagement.showUser();
                     break;
                 case 2:
-                    productManagement.showProduct();
+                    categoryManagement.showCategory();
                     break;
                 case 3:
-                    categoryManagement.showCategory();
+                    productManagement.showProduct();
                     break;
                 case 4:
                     orderManagement.showOrder();

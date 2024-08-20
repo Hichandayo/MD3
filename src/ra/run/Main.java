@@ -32,9 +32,9 @@ public class Main {
 
         while (true) {
             autoLogin();
-            System.out.println(ANSI_PURPLE + "╔═════════════════════════════════════╗" + ANSI_RESET);
-            System.out.println(ANSI_PURPLE + "║ Welcome to Hi-chan Shop             ║" + ANSI_RESET);
-            System.out.println(ANSI_PURPLE + "╠═════════════════════════════════════╣" + ANSI_RESET);
+            System.out.println(ANSI_PURPLE + "╔═════════════════════════ ══╗" + ANSI_RESET);
+            System.out.println(ANSI_PURPLE + "║ Welcome to Hi-chan Shop    ║" + ANSI_RESET);
+            System.out.println(ANSI_PURPLE + "╠══════════════════════════ ═╣" + ANSI_RESET);
             System.out.println(ANSI_PURPLE + "║" + ANSI_RESET + ANSI_CYAN + "    1. Đăng nhập " + ANSI_RESET + ANSI_PURPLE + "           ║" + ANSI_RESET);
             System.out.println(ANSI_PURPLE + "║" + ANSI_RESET + ANSI_CYAN + "    2. Đăng kí" + ANSI_RESET + ANSI_PURPLE + "              ║" + ANSI_RESET);
             System.out.println(ANSI_PURPLE + "║" + ANSI_RESET + ANSI_CYAN + "    3. Đăng nhập Admin" + ANSI_RESET + ANSI_PURPLE + "      ║" + ANSI_RESET);
